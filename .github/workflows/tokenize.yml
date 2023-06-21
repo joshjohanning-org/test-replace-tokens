@@ -16,6 +16,10 @@ jobs:
       - name: cat before
         run: cat appsettings_tokenized.json
         
+      - run: printenv
+      
+      - run: echo "$APIURL"
+        
       - uses: cschleiden/replace-tokens@v1
         with:
           tokenPrefix: '#{'
