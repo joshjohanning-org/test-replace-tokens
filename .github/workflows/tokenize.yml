@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,6 +20,11 @@ jobs:
       - run: printenv
       
       - run: echo "$GITHUB_APIURL"
+      
+      - name: set vars as 
+        run: gh variable list
+        env:
+          GH_TOKEN: ${{ github.token }}
         
       - uses: cschleiden/replace-tokens@v1
         with:
@@ -26,7 +32,7 @@ jobs:
           tokenSuffix: '}#'
           files: '["**/*_tokenized.json"]'
         env:
-          GITHUB_APIURL: ${{ vars.APIURL }}
+          APIURL: ${{ vars.APIURL }}
 
       - name: cat after
         run: cat appsettings_tokenized.json
