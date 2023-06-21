@@ -20,7 +20,7 @@ jobs:
         with:
           tokenPrefix: '#{'
           tokenSuffix: '}#'
-          files: '["**/*_tokenized.js"]'
+          files: '["**/*_tokenized.json"]'
 
       - name: cat after
         run: cat appsettings_tokenized.json
