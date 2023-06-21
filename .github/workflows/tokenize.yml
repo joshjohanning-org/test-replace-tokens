@@ -25,6 +25,8 @@ jobs:
           tokenPrefix: '#{'
           tokenSuffix: '}#'
           files: '["**/*_tokenized.json"]'
+        env:
+          GITHUB_APIURL: ${{ vars.APIURL }}
 
       - name: cat after
         run: cat appsettings_tokenized.json
