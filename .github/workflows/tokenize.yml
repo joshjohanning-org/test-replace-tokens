@@ -24,6 +24,9 @@ jobs:
           groups: |
             .github/variables/dev.yml
 
+      - run: printenv
+      - run: echo "$other-key"
+      
       - name: cat before
         run: cat appsettings_tokenized.json
       
