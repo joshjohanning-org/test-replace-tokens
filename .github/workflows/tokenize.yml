@@ -18,7 +18,7 @@ jobs:
         
       - run: printenv
       
-      - run: echo "$APIURL"
+      - run: echo "$GITHUB_APIURL"
         
       - uses: cschleiden/replace-tokens@v1
         with:
