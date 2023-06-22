@@ -7,11 +7,6 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-# for tokenization
-# option 1
-# env:
-#   APIURL: ${{ vars.APIURL }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +14,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # option 2
+      - name: run build
+        run: |
+          echo "running build!"
+
+  dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    needs: build
+    
+    # for tokenization
+    # option 1 - set variable for environment and map here
+    # env:
+    #   APIURL: ${{ vars.APIURL }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # option 2 - read variables and set as env variables using action
       - name: Inject Variables
         uses: lindluni/actions-variable-groups@v2
         with:
@@ -40,3 +52,39 @@ jobs:
 
       - name: cat after
         run: cat appsettings_tokenized.json
+        
+  qa:
+    runs-on: ubuntu-latest
+    environment: qa
+    needs: dev
+    
+    # for tokenization
+    # option 1 - set variable for environment and map here
+    # env:
+    #   APIURL: ${{ vars.APIURL }}
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      # option 2 - read variables and set as env variables using action
+      - name: Inject Variables
+        uses: lindluni/actions-variable-groups@v2
+        with:
+          groups: |
+            .github/variables/qa.yml
+
+      - run: printenv
+      - run: echo "$otherKey"
+      
+      - name: cat before
+        run: cat appsettings_tokenized.json
+        
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          tokenPrefix: '#{'
+          tokenSuffix: '}#'
+          files: '["**/*_tokenized.json"]'
+
+      - name: cat after
+        run: cat appsettings_tokenized.json
+
