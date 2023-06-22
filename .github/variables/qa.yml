@@ -1,0 +1,6 @@
+variables:
+- key: APIURL
+  value: https://api-qa.mycompany.com/api/v3
+- key: otherKey
+  value: abc
+  
