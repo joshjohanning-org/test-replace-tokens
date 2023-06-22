@@ -1,6 +1,6 @@
 variables:
 - key: APIURL
-  value: ghes71.tspascoal.com/api/v3
+  value: https://api-dev.mycompany.com/api/v3
 - key: otherKey
   value: abc
   
