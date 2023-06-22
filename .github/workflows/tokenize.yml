@@ -37,9 +37,6 @@ jobs:
         with:
           groups: |
             .github/variables/dev.yml
-
-      - run: printenv
-      - run: echo "$otherKey"
       
       - name: cat before
         run: cat appsettings_tokenized.json
@@ -73,9 +70,6 @@ jobs:
           groups: |
             .github/variables/qa.yml
 
-      - run: printenv
-      - run: echo "$otherKey"
-      
       - name: cat before
         run: cat appsettings_tokenized.json
         
