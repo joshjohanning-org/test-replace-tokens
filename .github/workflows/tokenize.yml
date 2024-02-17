@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: run build
         run: |
@@ -33,7 +33,7 @@ jobs:
       APIKEY: ${{ secrets.APIKEY }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # option 2 - read variables and set as env variables using action
       - name: Inject Variables
@@ -70,7 +70,7 @@ jobs:
     #   APIURL: ${{ vars.APIURL }}
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # option 2 - read variables and set as env variables using action
       - name: Inject Variables
