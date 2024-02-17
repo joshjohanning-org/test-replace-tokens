@@ -45,7 +45,8 @@ jobs:
       - name: cat before
         run: cat appsettings_tokenized.json
         
-      - uses: cschleiden/replace-tokens@v1
+      # - uses: cschleiden/replace-tokens@v1
+      - uses: joshjohanning/replace-tokens@v1.4
         with:
           tokenPrefix: '#{'
           tokenSuffix: '}#'
