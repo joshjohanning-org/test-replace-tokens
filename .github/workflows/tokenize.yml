@@ -37,7 +37,7 @@ jobs:
 
       # option 2 - read variables and set as env variables using action
       - name: Inject Variables
-        uses: lindluni/actions-variable-groups@v2
+        uses: lindluni/actions-variable-groups@v3
         with:
           groups: |
             .github/variables/dev.yml
@@ -75,7 +75,7 @@ jobs:
 
       # option 2 - read variables and set as env variables using action
       - name: Inject Variables
-        uses: lindluni/actions-variable-groups@v2
+        uses: lindluni/actions-variable-groups@v3
         with:
           groups: |
             .github/variables/qa.yml
